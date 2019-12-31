@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mybatis.generator.mapper.CodesetMappingMapper">
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CodesetMapping">
+    <id column="codeset_mapping_id" jdbcType="INTEGER" property="codesetMappingId" />
+    <result column="cz_codeset_id" jdbcType="BIGINT" property="czCodesetId" />
+    <result column="cz_year" jdbcType="INTEGER" property="czYear" />
+    <result column="zcy_codeset_id" jdbcType="BIGINT" property="zcyCodesetId" />
+    <result column="zcy_year" jdbcType="INTEGER" property="zcyYear" />
+    <result column="time_mapped" jdbcType="TIMESTAMP" property="timeMapped" />
+    <result column="cz_codeset_division_id" jdbcType="BIGINT" property="czCodesetDivisionId" />
+    <result column="zcy_codeset_division_id" jdbcType="BIGINT" property="zcyCodesetDivisionId" />
+    <result column="cz_district" jdbcType="VARCHAR" property="czDistrict" />
+    <result column="zcy_district" jdbcType="VARCHAR" property="zcyDistrict" />
+    <result column="gpcatalogs" jdbcType="INTEGER" property="gpcatalogs" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    codeset_mapping_id, cz_codeset_id, cz_year, zcy_codeset_id, zcy_year, time_mapped, 
+    cz_codeset_division_id, zcy_codeset_division_id, cz_district, zcy_district, gpcatalogs
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from codeset_mapping
+    where codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from codeset_mapping
+    where codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CodesetMapping">
+    insert into codeset_mapping (codeset_mapping_id, cz_codeset_id, cz_year, 
+      zcy_codeset_id, zcy_year, time_mapped, 
+      cz_codeset_division_id, zcy_codeset_division_id, 
+      cz_district, zcy_district, gpcatalogs
+      )
+    values (#{codesetMappingId,jdbcType=INTEGER}, #{czCodesetId,jdbcType=BIGINT}, #{czYear,jdbcType=INTEGER}, 
+      #{zcyCodesetId,jdbcType=BIGINT}, #{zcyYear,jdbcType=INTEGER}, #{timeMapped,jdbcType=TIMESTAMP}, 
+      #{czCodesetDivisionId,jdbcType=BIGINT}, #{zcyCodesetDivisionId,jdbcType=BIGINT}, 
+      #{czDistrict,jdbcType=VARCHAR}, #{zcyDistrict,jdbcType=VARCHAR}, #{gpcatalogs,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CodesetMapping">
+    insert into codeset_mapping
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codesetMappingId != null">
+        codeset_mapping_id,
+      </if>
+      <if test="czCodesetId != null">
+        cz_codeset_id,
+      </if>
+      <if test="czYear != null">
+        cz_year,
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id,
+      </if>
+      <if test="zcyYear != null">
+        zcy_year,
+      </if>
+      <if test="timeMapped != null">
+        time_mapped,
+      </if>
+      <if test="czCodesetDivisionId != null">
+        cz_codeset_division_id,
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        zcy_codeset_division_id,
+      </if>
+      <if test="czDistrict != null">
+        cz_district,
+      </if>
+      <if test="zcyDistrict != null">
+        zcy_district,
+      </if>
+      <if test="gpcatalogs != null">
+        gpcatalogs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codesetMappingId != null">
+        #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="czCodesetId != null">
+        #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="czYear != null">
+        #{czYear,jdbcType=INTEGER},
+      </if>
+      <if test="zcyCodesetId != null">
+        #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyYear != null">
+        #{zcyYear,jdbcType=INTEGER},
+      </if>
+      <if test="timeMapped != null">
+        #{timeMapped,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czCodesetDivisionId != null">
+        #{czCodesetDivisionId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        #{zcyCodesetDivisionId,jdbcType=BIGINT},
+      </if>
+      <if test="czDistrict != null">
+        #{czDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyDistrict != null">
+        #{zcyDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="gpcatalogs != null">
+        #{gpcatalogs,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CodesetMapping">
+    update codeset_mapping
+    <set>
+      <if test="czCodesetId != null">
+        cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="czYear != null">
+        cz_year = #{czYear,jdbcType=INTEGER},
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyYear != null">
+        zcy_year = #{zcyYear,jdbcType=INTEGER},
+      </if>
+      <if test="timeMapped != null">
+        time_mapped = #{timeMapped,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czCodesetDivisionId != null">
+        cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=BIGINT},
+      </if>
+      <if test="czDistrict != null">
+        cz_district = #{czDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyDistrict != null">
+        zcy_district = #{zcyDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="gpcatalogs != null">
+        gpcatalogs = #{gpcatalogs,jdbcType=INTEGER},
+      </if>
+    </set>
+    where codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CodesetMapping">
+    update codeset_mapping
+    set cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      cz_year = #{czYear,jdbcType=INTEGER},
+      zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      zcy_year = #{zcyYear,jdbcType=INTEGER},
+      time_mapped = #{timeMapped,jdbcType=TIMESTAMP},
+      cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=BIGINT},
+      zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=BIGINT},
+      cz_district = #{czDistrict,jdbcType=VARCHAR},
+      zcy_district = #{zcyDistrict,jdbcType=VARCHAR},
+      gpcatalogs = #{gpcatalogs,jdbcType=INTEGER}
+    where codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CodesetMapping">
+    <id column="codeset_mapping_id" jdbcType="INTEGER" property="codesetMappingId" />
+    <result column="cz_codeset_id" jdbcType="BIGINT" property="czCodesetId" />
+    <result column="cz_year" jdbcType="INTEGER" property="czYear" />
+    <result column="zcy_codeset_id" jdbcType="BIGINT" property="zcyCodesetId" />
+    <result column="zcy_year" jdbcType="INTEGER" property="zcyYear" />
+    <result column="time_mapped" jdbcType="TIMESTAMP" property="timeMapped" />
+    <result column="cz_codeset_division_id" jdbcType="BIGINT" property="czCodesetDivisionId" />
+    <result column="zcy_codeset_division_id" jdbcType="BIGINT" property="zcyCodesetDivisionId" />
+    <result column="cz_district" jdbcType="VARCHAR" property="czDistrict" />
+    <result column="zcy_district" jdbcType="VARCHAR" property="zcyDistrict" />
+    <result column="gpcatalogs" jdbcType="INTEGER" property="gpcatalogs" />
+    <result column="lastyear_mapping_id" jdbcType="INTEGER" property="lastyearMappingId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    codeset_mapping_id, cz_codeset_id, cz_year, zcy_codeset_id, zcy_year, time_mapped, 
+    cz_codeset_division_id, zcy_codeset_division_id, cz_district, zcy_district, gpcatalogs, 
+    lastyear_mapping_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from codeset_mapping
+    where codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from codeset_mapping
+    where codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CodesetMapping">
+    insert into codeset_mapping (codeset_mapping_id, cz_codeset_id, cz_year, 
+      zcy_codeset_id, zcy_year, time_mapped, 
+      cz_codeset_division_id, zcy_codeset_division_id, 
+      cz_district, zcy_district, gpcatalogs, 
+      lastyear_mapping_id)
+    values (#{codesetMappingId,jdbcType=INTEGER}, #{czCodesetId,jdbcType=BIGINT}, #{czYear,jdbcType=INTEGER}, 
+      #{zcyCodesetId,jdbcType=BIGINT}, #{zcyYear,jdbcType=INTEGER}, #{timeMapped,jdbcType=TIMESTAMP}, 
+      #{czCodesetDivisionId,jdbcType=BIGINT}, #{zcyCodesetDivisionId,jdbcType=BIGINT}, 
+      #{czDistrict,jdbcType=VARCHAR}, #{zcyDistrict,jdbcType=VARCHAR}, #{gpcatalogs,jdbcType=INTEGER}, 
+      #{lastyearMappingId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CodesetMapping">
+    insert into codeset_mapping
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codesetMappingId != null">
+        codeset_mapping_id,
+      </if>
+      <if test="czCodesetId != null">
+        cz_codeset_id,
+      </if>
+      <if test="czYear != null">
+        cz_year,
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id,
+      </if>
+      <if test="zcyYear != null">
+        zcy_year,
+      </if>
+      <if test="timeMapped != null">
+        time_mapped,
+      </if>
+      <if test="czCodesetDivisionId != null">
+        cz_codeset_division_id,
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        zcy_codeset_division_id,
+      </if>
+      <if test="czDistrict != null">
+        cz_district,
+      </if>
+      <if test="zcyDistrict != null">
+        zcy_district,
+      </if>
+      <if test="gpcatalogs != null">
+        gpcatalogs,
+      </if>
+      <if test="lastyearMappingId != null">
+        lastyear_mapping_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codesetMappingId != null">
+        #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="czCodesetId != null">
+        #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="czYear != null">
+        #{czYear,jdbcType=INTEGER},
+      </if>
+      <if test="zcyCodesetId != null">
+        #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyYear != null">
+        #{zcyYear,jdbcType=INTEGER},
+      </if>
+      <if test="timeMapped != null">
+        #{timeMapped,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czCodesetDivisionId != null">
+        #{czCodesetDivisionId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        #{zcyCodesetDivisionId,jdbcType=BIGINT},
+      </if>
+      <if test="czDistrict != null">
+        #{czDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyDistrict != null">
+        #{zcyDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="gpcatalogs != null">
+        #{gpcatalogs,jdbcType=INTEGER},
+      </if>
+      <if test="lastyearMappingId != null">
+        #{lastyearMappingId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CodesetMapping">
+    update codeset_mapping
+    <set>
+      <if test="czCodesetId != null">
+        cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="czYear != null">
+        cz_year = #{czYear,jdbcType=INTEGER},
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyYear != null">
+        zcy_year = #{zcyYear,jdbcType=INTEGER},
+      </if>
+      <if test="timeMapped != null">
+        time_mapped = #{timeMapped,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czCodesetDivisionId != null">
+        cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=BIGINT},
+      </if>
+      <if test="czDistrict != null">
+        cz_district = #{czDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyDistrict != null">
+        zcy_district = #{zcyDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="gpcatalogs != null">
+        gpcatalogs = #{gpcatalogs,jdbcType=INTEGER},
+      </if>
+      <if test="lastyearMappingId != null">
+        lastyear_mapping_id = #{lastyearMappingId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CodesetMapping">
+    update codeset_mapping
+    set cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      cz_year = #{czYear,jdbcType=INTEGER},
+      zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      zcy_year = #{zcyYear,jdbcType=INTEGER},
+      time_mapped = #{timeMapped,jdbcType=TIMESTAMP},
+      cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=BIGINT},
+      zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=BIGINT},
+      cz_district = #{czDistrict,jdbcType=VARCHAR},
+      zcy_district = #{zcyDistrict,jdbcType=VARCHAR},
+      gpcatalogs = #{gpcatalogs,jdbcType=INTEGER},
+      lastyear_mapping_id = #{lastyearMappingId,jdbcType=INTEGER}
+    where codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER}
+  </update>
+</mapper>

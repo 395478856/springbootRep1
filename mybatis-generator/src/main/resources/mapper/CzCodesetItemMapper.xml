@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mybatis.generator.mapper.CzCodesetItemMapper">
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    <id column="cz_codeset_item_id" jdbcType="BIGINT" property="czCodesetItemId" />
+    <result column="cz_codeset_id" jdbcType="BIGINT" property="czCodesetId" />
+    <result column="cz_codeset" jdbcType="VARCHAR" property="czCodeset" />
+    <result column="cz_codeset_division_id" jdbcType="INTEGER" property="czCodesetDivisionId" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="data_version" jdbcType="TINYINT" property="dataVersion" />
+    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+    <result column="time_released" jdbcType="TIMESTAMP" property="timeReleased" />
+    <result column="cz_code" jdbcType="VARCHAR" property="czCode" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cz_codeset_item_id, cz_codeset_id, cz_codeset, cz_codeset_division_id, year, district, 
+    code, name, data_version, del_flag, time_released, cz_code
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cz_codeset_item
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cz_codeset_item
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    insert into cz_codeset_item (cz_codeset_item_id, cz_codeset_id, cz_codeset, 
+      cz_codeset_division_id, year, district, 
+      code, name, data_version, 
+      del_flag, time_released, cz_code, 
+      description)
+    values (#{czCodesetItemId,jdbcType=BIGINT}, #{czCodesetId,jdbcType=BIGINT}, #{czCodeset,jdbcType=VARCHAR}, 
+      #{czCodesetDivisionId,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, #{district,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{dataVersion,jdbcType=TINYINT}, 
+      #{delFlag,jdbcType=TINYINT}, #{timeReleased,jdbcType=TIMESTAMP}, #{czCode,jdbcType=VARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    insert into cz_codeset_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id,
+      </if>
+      <if test="czCodesetId != null">
+        cz_codeset_id,
+      </if>
+      <if test="czCodeset != null">
+        cz_codeset,
+      </if>
+      <if test="czCodesetDivisionId != null">
+        cz_codeset_division_id,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="dataVersion != null">
+        data_version,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="timeReleased != null">
+        time_released,
+      </if>
+      <if test="czCode != null">
+        cz_code,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="czCodesetItemId != null">
+        #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodesetId != null">
+        #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodeset != null">
+        #{czCodeset,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetDivisionId != null">
+        #{czCodesetDivisionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null">
+        #{dataVersion,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="timeReleased != null">
+        #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czCode != null">
+        #{czCode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    update cz_codeset_item
+    <set>
+      <if test="czCodesetId != null">
+        cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodeset != null">
+        cz_codeset = #{czCodeset,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetDivisionId != null">
+        cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null">
+        data_version = #{dataVersion,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="timeReleased != null">
+        time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czCode != null">
+        cz_code = #{czCode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    update cz_codeset_item
+    set cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      cz_codeset = #{czCodeset,jdbcType=VARCHAR},
+      cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      district = #{district,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      data_version = #{dataVersion,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      cz_code = #{czCode,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    update cz_codeset_item
+    set cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      cz_codeset = #{czCodeset,jdbcType=VARCHAR},
+      cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      district = #{district,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      data_version = #{dataVersion,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      cz_code = #{czCode,jdbcType=VARCHAR}
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    <id column="cz_codeset_item_id" jdbcType="BIGINT" property="czCodesetItemId" />
+    <result column="cz_codeset_id" jdbcType="BIGINT" property="czCodesetId" />
+    <result column="cz_codeset" jdbcType="VARCHAR" property="czCodeset" />
+    <result column="cz_codeset_division_id" jdbcType="INTEGER" property="czCodesetDivisionId" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="data_version" jdbcType="TINYINT" property="dataVersion" />
+    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+    <result column="time_released" jdbcType="TIMESTAMP" property="timeReleased" />
+    <result column="cz_code" jdbcType="VARCHAR" property="czCode" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cz_codeset_item_id, cz_codeset_id, cz_codeset, cz_codeset_division_id, year, district, 
+    code, name, data_version, del_flag, time_released, cz_code
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cz_codeset_item
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cz_codeset_item
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    insert into cz_codeset_item (cz_codeset_item_id, cz_codeset_id, cz_codeset, 
+      cz_codeset_division_id, year, district, 
+      code, name, data_version, 
+      del_flag, time_released, cz_code, 
+      description)
+    values (#{czCodesetItemId,jdbcType=BIGINT}, #{czCodesetId,jdbcType=BIGINT}, #{czCodeset,jdbcType=VARCHAR}, 
+      #{czCodesetDivisionId,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, #{district,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{dataVersion,jdbcType=TINYINT}, 
+      #{delFlag,jdbcType=TINYINT}, #{timeReleased,jdbcType=TIMESTAMP}, #{czCode,jdbcType=VARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    insert into cz_codeset_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id,
+      </if>
+      <if test="czCodesetId != null">
+        cz_codeset_id,
+      </if>
+      <if test="czCodeset != null">
+        cz_codeset,
+      </if>
+      <if test="czCodesetDivisionId != null">
+        cz_codeset_division_id,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="dataVersion != null">
+        data_version,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="timeReleased != null">
+        time_released,
+      </if>
+      <if test="czCode != null">
+        cz_code,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="czCodesetItemId != null">
+        #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodesetId != null">
+        #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodeset != null">
+        #{czCodeset,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetDivisionId != null">
+        #{czCodesetDivisionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null">
+        #{dataVersion,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="timeReleased != null">
+        #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czCode != null">
+        #{czCode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    update cz_codeset_item
+    <set>
+      <if test="czCodesetId != null">
+        cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodeset != null">
+        cz_codeset = #{czCodeset,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetDivisionId != null">
+        cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null">
+        data_version = #{dataVersion,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="timeReleased != null">
+        time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="czCode != null">
+        cz_code = #{czCode,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    update cz_codeset_item
+    set cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      cz_codeset = #{czCodeset,jdbcType=VARCHAR},
+      cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      district = #{district,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      data_version = #{dataVersion,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      cz_code = #{czCode,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CzCodesetItem">
+    update cz_codeset_item
+    set cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      cz_codeset = #{czCodeset,jdbcType=VARCHAR},
+      cz_codeset_division_id = #{czCodesetDivisionId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      district = #{district,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      data_version = #{dataVersion,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      cz_code = #{czCode,jdbcType=VARCHAR}
+    where cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.mybatis.generator.mapper.SlaveRelayLogInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.SlaveRelayLogInfo" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="Number_of_lines" property="numberOfLines" jdbcType="INTEGER" />
+    <result column="Relay_log_pos" property="relayLogPos" jdbcType="BIGINT" />
+    <result column="Master_log_pos" property="masterLogPos" jdbcType="BIGINT" />
+    <result column="Sql_delay" property="sqlDelay" jdbcType="INTEGER" />
+    <result column="Number_of_workers" property="numberOfWorkers" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.itcast.mybatis.generator.model.SlaveRelayLogInfoWithBLOBs" extends="BaseResultMap" >
+    <result column="Relay_log_name" property="relayLogName" jdbcType="LONGVARCHAR" />
+    <result column="Master_log_name" property="masterLogName" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Id, Number_of_lines, Relay_log_pos, Master_log_pos, Sql_delay, Number_of_workers
+  </sql>
+  <sql id="Blob_Column_List" >
+    Relay_log_name, Master_log_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from slave_relay_log_info
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from slave_relay_log_info
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.SlaveRelayLogInfoWithBLOBs" >
+    insert into slave_relay_log_info (Id, Number_of_lines, Relay_log_pos, 
+      Master_log_pos, Sql_delay, Number_of_workers, 
+      Relay_log_name, Master_log_name)
+    values (#{id,jdbcType=INTEGER}, #{numberOfLines,jdbcType=INTEGER}, #{relayLogPos,jdbcType=BIGINT}, 
+      #{masterLogPos,jdbcType=BIGINT}, #{sqlDelay,jdbcType=INTEGER}, #{numberOfWorkers,jdbcType=INTEGER}, 
+      #{relayLogName,jdbcType=LONGVARCHAR}, #{masterLogName,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.SlaveRelayLogInfoWithBLOBs" >
+    insert into slave_relay_log_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="numberOfLines != null" >
+        Number_of_lines,
+      </if>
+      <if test="relayLogPos != null" >
+        Relay_log_pos,
+      </if>
+      <if test="masterLogPos != null" >
+        Master_log_pos,
+      </if>
+      <if test="sqlDelay != null" >
+        Sql_delay,
+      </if>
+      <if test="numberOfWorkers != null" >
+        Number_of_workers,
+      </if>
+      <if test="relayLogName != null" >
+        Relay_log_name,
+      </if>
+      <if test="masterLogName != null" >
+        Master_log_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="numberOfLines != null" >
+        #{numberOfLines,jdbcType=INTEGER},
+      </if>
+      <if test="relayLogPos != null" >
+        #{relayLogPos,jdbcType=BIGINT},
+      </if>
+      <if test="masterLogPos != null" >
+        #{masterLogPos,jdbcType=BIGINT},
+      </if>
+      <if test="sqlDelay != null" >
+        #{sqlDelay,jdbcType=INTEGER},
+      </if>
+      <if test="numberOfWorkers != null" >
+        #{numberOfWorkers,jdbcType=INTEGER},
+      </if>
+      <if test="relayLogName != null" >
+        #{relayLogName,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="masterLogName != null" >
+        #{masterLogName,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.SlaveRelayLogInfoWithBLOBs" >
+    update slave_relay_log_info
+    <set >
+      <if test="numberOfLines != null" >
+        Number_of_lines = #{numberOfLines,jdbcType=INTEGER},
+      </if>
+      <if test="relayLogPos != null" >
+        Relay_log_pos = #{relayLogPos,jdbcType=BIGINT},
+      </if>
+      <if test="masterLogPos != null" >
+        Master_log_pos = #{masterLogPos,jdbcType=BIGINT},
+      </if>
+      <if test="sqlDelay != null" >
+        Sql_delay = #{sqlDelay,jdbcType=INTEGER},
+      </if>
+      <if test="numberOfWorkers != null" >
+        Number_of_workers = #{numberOfWorkers,jdbcType=INTEGER},
+      </if>
+      <if test="relayLogName != null" >
+        Relay_log_name = #{relayLogName,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="masterLogName != null" >
+        Master_log_name = #{masterLogName,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.mybatis.generator.model.SlaveRelayLogInfoWithBLOBs" >
+    update slave_relay_log_info
+    set Number_of_lines = #{numberOfLines,jdbcType=INTEGER},
+      Relay_log_pos = #{relayLogPos,jdbcType=BIGINT},
+      Master_log_pos = #{masterLogPos,jdbcType=BIGINT},
+      Sql_delay = #{sqlDelay,jdbcType=INTEGER},
+      Number_of_workers = #{numberOfWorkers,jdbcType=INTEGER},
+      Relay_log_name = #{relayLogName,jdbcType=LONGVARCHAR},
+      Master_log_name = #{masterLogName,jdbcType=LONGVARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.SlaveRelayLogInfo" >
+    update slave_relay_log_info
+    set Number_of_lines = #{numberOfLines,jdbcType=INTEGER},
+      Relay_log_pos = #{relayLogPos,jdbcType=BIGINT},
+      Master_log_pos = #{masterLogPos,jdbcType=BIGINT},
+      Sql_delay = #{sqlDelay,jdbcType=INTEGER},
+      Number_of_workers = #{numberOfWorkers,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

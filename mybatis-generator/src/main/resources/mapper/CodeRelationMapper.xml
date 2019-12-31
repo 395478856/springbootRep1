@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mybatis.generator.mapper.CodeRelationMapper">
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CodeRelation">
+    <id column="relation_id" jdbcType="BIGINT" property="relationId" />
+    <result column="cz_code" jdbcType="VARCHAR" property="czCode" />
+    <result column="cz_codeset_year" jdbcType="VARCHAR" property="czCodesetYear" />
+    <result column="cz_code_version" jdbcType="VARCHAR" property="czCodeVersion" />
+    <result column="zcy_code" jdbcType="VARCHAR" property="zcyCode" />
+    <result column="zcy_codeset_year" jdbcType="VARCHAR" property="zcyCodesetYear" />
+    <result column="zcy_code_version" jdbcType="VARCHAR" property="zcyCodeVersion" />
+    <result column="codeset_mapping_id" jdbcType="INTEGER" property="codesetMappingId" />
+    <result column="cz_codeset_item_id" jdbcType="BIGINT" property="czCodesetItemId" />
+    <result column="zcy_codeset_district_year" jdbcType="VARCHAR" property="zcyCodesetDistrictYear" />
+    <result column="cz_codeset_id" jdbcType="BIGINT" property="czCodesetId" />
+    <result column="gpcatalogs" jdbcType="INTEGER" property="gpcatalogs" />
+    <result column="zcy_codeset_id" jdbcType="BIGINT" property="zcyCodesetId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    relation_id, cz_code, cz_codeset_year, cz_code_version, zcy_code, zcy_codeset_year, 
+    zcy_code_version, codeset_mapping_id, cz_codeset_item_id, zcy_codeset_district_year, 
+    cz_codeset_id, gpcatalogs, zcy_codeset_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from code_relation
+    where relation_id = #{relationId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from code_relation
+    where relation_id = #{relationId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CodeRelation">
+    insert into code_relation (relation_id, cz_code, cz_codeset_year, 
+      cz_code_version, zcy_code, zcy_codeset_year, 
+      zcy_code_version, codeset_mapping_id, cz_codeset_item_id, 
+      zcy_codeset_district_year, cz_codeset_id, gpcatalogs, 
+      zcy_codeset_id)
+    values (#{relationId,jdbcType=BIGINT}, #{czCode,jdbcType=VARCHAR}, #{czCodesetYear,jdbcType=VARCHAR}, 
+      #{czCodeVersion,jdbcType=VARCHAR}, #{zcyCode,jdbcType=VARCHAR}, #{zcyCodesetYear,jdbcType=VARCHAR}, 
+      #{zcyCodeVersion,jdbcType=VARCHAR}, #{codesetMappingId,jdbcType=INTEGER}, #{czCodesetItemId,jdbcType=BIGINT}, 
+      #{zcyCodesetDistrictYear,jdbcType=VARCHAR}, #{czCodesetId,jdbcType=BIGINT}, #{gpcatalogs,jdbcType=INTEGER}, 
+      #{zcyCodesetId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CodeRelation">
+    insert into code_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="relationId != null">
+        relation_id,
+      </if>
+      <if test="czCode != null">
+        cz_code,
+      </if>
+      <if test="czCodesetYear != null">
+        cz_codeset_year,
+      </if>
+      <if test="czCodeVersion != null">
+        cz_code_version,
+      </if>
+      <if test="zcyCode != null">
+        zcy_code,
+      </if>
+      <if test="zcyCodesetYear != null">
+        zcy_codeset_year,
+      </if>
+      <if test="zcyCodeVersion != null">
+        zcy_code_version,
+      </if>
+      <if test="codesetMappingId != null">
+        codeset_mapping_id,
+      </if>
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id,
+      </if>
+      <if test="zcyCodesetDistrictYear != null">
+        zcy_codeset_district_year,
+      </if>
+      <if test="czCodesetId != null">
+        cz_codeset_id,
+      </if>
+      <if test="gpcatalogs != null">
+        gpcatalogs,
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="relationId != null">
+        #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="czCode != null">
+        #{czCode,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetYear != null">
+        #{czCodesetYear,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodeVersion != null">
+        #{czCodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCode != null">
+        #{zcyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodesetYear != null">
+        #{zcyCodesetYear,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodeVersion != null">
+        #{zcyCodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="codesetMappingId != null">
+        #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="czCodesetItemId != null">
+        #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetDistrictYear != null">
+        #{zcyCodesetDistrictYear,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetId != null">
+        #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="gpcatalogs != null">
+        #{gpcatalogs,jdbcType=INTEGER},
+      </if>
+      <if test="zcyCodesetId != null">
+        #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CodeRelation">
+    update code_relation
+    <set>
+      <if test="czCode != null">
+        cz_code = #{czCode,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetYear != null">
+        cz_codeset_year = #{czCodesetYear,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodeVersion != null">
+        cz_code_version = #{czCodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCode != null">
+        zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodesetYear != null">
+        zcy_codeset_year = #{zcyCodesetYear,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodeVersion != null">
+        zcy_code_version = #{zcyCodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="codesetMappingId != null">
+        codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetDistrictYear != null">
+        zcy_codeset_district_year = #{zcyCodesetDistrictYear,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetId != null">
+        cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="gpcatalogs != null">
+        gpcatalogs = #{gpcatalogs,jdbcType=INTEGER},
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+    </set>
+    where relation_id = #{relationId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CodeRelation">
+    update code_relation
+    set cz_code = #{czCode,jdbcType=VARCHAR},
+      cz_codeset_year = #{czCodesetYear,jdbcType=VARCHAR},
+      cz_code_version = #{czCodeVersion,jdbcType=VARCHAR},
+      zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      zcy_codeset_year = #{zcyCodesetYear,jdbcType=VARCHAR},
+      zcy_code_version = #{zcyCodeVersion,jdbcType=VARCHAR},
+      codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      zcy_codeset_district_year = #{zcyCodesetDistrictYear,jdbcType=VARCHAR},
+      cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      gpcatalogs = #{gpcatalogs,jdbcType=INTEGER},
+      zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT}
+    where relation_id = #{relationId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CodeRelation">
+    <id column="relation_id" jdbcType="BIGINT" property="relationId" />
+    <result column="cz_code" jdbcType="VARCHAR" property="czCode" />
+    <result column="cz_codeset_year" jdbcType="VARCHAR" property="czCodesetYear" />
+    <result column="cz_code_version" jdbcType="VARCHAR" property="czCodeVersion" />
+    <result column="zcy_code" jdbcType="VARCHAR" property="zcyCode" />
+    <result column="zcy_codeset_year" jdbcType="VARCHAR" property="zcyCodesetYear" />
+    <result column="zcy_code_version" jdbcType="VARCHAR" property="zcyCodeVersion" />
+    <result column="codeset_mapping_id" jdbcType="INTEGER" property="codesetMappingId" />
+    <result column="cz_codeset_item_id" jdbcType="BIGINT" property="czCodesetItemId" />
+    <result column="zcy_codeset_district_year" jdbcType="VARCHAR" property="zcyCodesetDistrictYear" />
+    <result column="cz_codeset_id" jdbcType="BIGINT" property="czCodesetId" />
+    <result column="gpcatalogs" jdbcType="INTEGER" property="gpcatalogs" />
+    <result column="zcy_codeset_id" jdbcType="BIGINT" property="zcyCodesetId" />
+    <result column="lastyear_relation_id" jdbcType="INTEGER" property="lastyearRelationId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    relation_id, cz_code, cz_codeset_year, cz_code_version, zcy_code, zcy_codeset_year, 
+    zcy_code_version, codeset_mapping_id, cz_codeset_item_id, zcy_codeset_district_year, 
+    cz_codeset_id, gpcatalogs, zcy_codeset_id, lastyear_relation_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from code_relation
+    where relation_id = #{relationId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from code_relation
+    where relation_id = #{relationId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CodeRelation">
+    insert into code_relation (relation_id, cz_code, cz_codeset_year, 
+      cz_code_version, zcy_code, zcy_codeset_year, 
+      zcy_code_version, codeset_mapping_id, cz_codeset_item_id, 
+      zcy_codeset_district_year, cz_codeset_id, gpcatalogs, 
+      zcy_codeset_id, lastyear_relation_id)
+    values (#{relationId,jdbcType=BIGINT}, #{czCode,jdbcType=VARCHAR}, #{czCodesetYear,jdbcType=VARCHAR}, 
+      #{czCodeVersion,jdbcType=VARCHAR}, #{zcyCode,jdbcType=VARCHAR}, #{zcyCodesetYear,jdbcType=VARCHAR}, 
+      #{zcyCodeVersion,jdbcType=VARCHAR}, #{codesetMappingId,jdbcType=INTEGER}, #{czCodesetItemId,jdbcType=BIGINT}, 
+      #{zcyCodesetDistrictYear,jdbcType=VARCHAR}, #{czCodesetId,jdbcType=BIGINT}, #{gpcatalogs,jdbcType=INTEGER}, 
+      #{zcyCodesetId,jdbcType=BIGINT}, #{lastyearRelationId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CodeRelation">
+    insert into code_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="relationId != null">
+        relation_id,
+      </if>
+      <if test="czCode != null">
+        cz_code,
+      </if>
+      <if test="czCodesetYear != null">
+        cz_codeset_year,
+      </if>
+      <if test="czCodeVersion != null">
+        cz_code_version,
+      </if>
+      <if test="zcyCode != null">
+        zcy_code,
+      </if>
+      <if test="zcyCodesetYear != null">
+        zcy_codeset_year,
+      </if>
+      <if test="zcyCodeVersion != null">
+        zcy_code_version,
+      </if>
+      <if test="codesetMappingId != null">
+        codeset_mapping_id,
+      </if>
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id,
+      </if>
+      <if test="zcyCodesetDistrictYear != null">
+        zcy_codeset_district_year,
+      </if>
+      <if test="czCodesetId != null">
+        cz_codeset_id,
+      </if>
+      <if test="gpcatalogs != null">
+        gpcatalogs,
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id,
+      </if>
+      <if test="lastyearRelationId != null">
+        lastyear_relation_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="relationId != null">
+        #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="czCode != null">
+        #{czCode,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetYear != null">
+        #{czCodesetYear,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodeVersion != null">
+        #{czCodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCode != null">
+        #{zcyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodesetYear != null">
+        #{zcyCodesetYear,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodeVersion != null">
+        #{zcyCodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="codesetMappingId != null">
+        #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="czCodesetItemId != null">
+        #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetDistrictYear != null">
+        #{zcyCodesetDistrictYear,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetId != null">
+        #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="gpcatalogs != null">
+        #{gpcatalogs,jdbcType=INTEGER},
+      </if>
+      <if test="zcyCodesetId != null">
+        #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="lastyearRelationId != null">
+        #{lastyearRelationId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CodeRelation">
+    update code_relation
+    <set>
+      <if test="czCode != null">
+        cz_code = #{czCode,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetYear != null">
+        cz_codeset_year = #{czCodesetYear,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodeVersion != null">
+        cz_code_version = #{czCodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCode != null">
+        zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodesetYear != null">
+        zcy_codeset_year = #{zcyCodesetYear,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodeVersion != null">
+        zcy_code_version = #{zcyCodeVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="codesetMappingId != null">
+        codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetDistrictYear != null">
+        zcy_codeset_district_year = #{zcyCodesetDistrictYear,jdbcType=VARCHAR},
+      </if>
+      <if test="czCodesetId != null">
+        cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="gpcatalogs != null">
+        gpcatalogs = #{gpcatalogs,jdbcType=INTEGER},
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="lastyearRelationId != null">
+        lastyear_relation_id = #{lastyearRelationId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where relation_id = #{relationId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CodeRelation">
+    update code_relation
+    set cz_code = #{czCode,jdbcType=VARCHAR},
+      cz_codeset_year = #{czCodesetYear,jdbcType=VARCHAR},
+      cz_code_version = #{czCodeVersion,jdbcType=VARCHAR},
+      zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      zcy_codeset_year = #{zcyCodesetYear,jdbcType=VARCHAR},
+      zcy_code_version = #{zcyCodeVersion,jdbcType=VARCHAR},
+      codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      zcy_codeset_district_year = #{zcyCodesetDistrictYear,jdbcType=VARCHAR},
+      cz_codeset_id = #{czCodesetId,jdbcType=BIGINT},
+      gpcatalogs = #{gpcatalogs,jdbcType=INTEGER},
+      zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      lastyear_relation_id = #{lastyearRelationId,jdbcType=INTEGER}
+    where relation_id = #{relationId,jdbcType=BIGINT}
+  </update>
+</mapper>

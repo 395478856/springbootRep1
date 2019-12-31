@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mybatis.generator.mapper.AgProtocolMapper">
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.AgProtocol">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="protocol_no" jdbcType="VARCHAR" property="protocolNo" />
+    <result column="protocol_name" jdbcType="VARCHAR" property="protocolName" />
+    <result column="project_id" jdbcType="BIGINT" property="projectId" />
+    <result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="org_id" jdbcType="BIGINT" property="orgId" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="supplier_code" jdbcType="BIGINT" property="supplierCode" />
+    <result column="supplier_name" jdbcType="VARCHAR" property="supplierName" />
+    <result column="supplier_contact_person" jdbcType="VARCHAR" property="supplierContactPerson" />
+    <result column="supplier_contact_phone" jdbcType="VARCHAR" property="supplierContactPhone" />
+    <result column="bid_state" jdbcType="BIT" property="bidState" />
+    <result column="status_step" jdbcType="BIGINT" property="statusStep" />
+    <result column="status_comment" jdbcType="VARCHAR" property="statusComment" />
+    <result column="state" jdbcType="BIT" property="state" />
+    <result column="mode" jdbcType="BIT" property="mode" />
+    <result column="source" jdbcType="BIT" property="source" />
+    <result column="trait" jdbcType="INTEGER" property="trait" />
+    <result column="biz_type" jdbcType="BIT" property="bizType" />
+    <result column="biz_type_name" jdbcType="VARCHAR" property="bizTypeName" />
+    <result column="apply_date" jdbcType="TIMESTAMP" property="applyDate" />
+    <result column="impl_start_date" jdbcType="TIMESTAMP" property="implStartDate" />
+    <result column="impl_end_date" jdbcType="TIMESTAMP" property="implEndDate" />
+    <result column="discount_rate" jdbcType="DECIMAL" property="discountRate" />
+    <result column="entrust_org_ids" jdbcType="VARCHAR" property="entrustOrgIds" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="is_contain_goods" jdbcType="BIT" property="isContainGoods" />
+    <result column="contact_person" jdbcType="VARCHAR" property="contactPerson" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="district_id" jdbcType="VARCHAR" property="districtId" />
+    <result column="district_name" jdbcType="VARCHAR" property="districtName" />
+    <result column="suspend_start_date" jdbcType="TIMESTAMP" property="suspendStartDate" />
+    <result column="suspend_end_date" jdbcType="TIMESTAMP" property="suspendEndDate" />
+    <result column="deposit_amount" jdbcType="BIGINT" property="depositAmount" />
+    <result column="protocol_type" jdbcType="BIT" property="protocolType" />
+    <result column="net_id" jdbcType="BIGINT" property="netId" />
+    <result column="instance_code" jdbcType="VARCHAR" property="instanceCode" />
+    <result column="supplier_tag" jdbcType="VARCHAR" property="supplierTag" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.itcast.mybatis.generator.model.AgProtocolWithBLOBs">
+    <result column="sale_deliver_ids" jdbcType="LONGVARCHAR" property="saleDeliverIds" />
+    <result column="sale_deliver_names" jdbcType="LONGVARCHAR" property="saleDeliverNames" />
+    <result column="service_deliver_ids" jdbcType="LONGVARCHAR" property="serviceDeliverIds" />
+    <result column="service_deliver_names" jdbcType="LONGVARCHAR" property="serviceDeliverNames" />
+    <result column="extended_json" jdbcType="LONGVARCHAR" property="extendedJson" />
+    <result column="deliver_ids" jdbcType="LONGVARCHAR" property="deliverIds" />
+    <result column="deliver_names" jdbcType="LONGVARCHAR" property="deliverNames" />
+    <result column="effective_deliver_ids" jdbcType="LONGVARCHAR" property="effectiveDeliverIds" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, protocol_no, protocol_name, project_id, project_no, project_name, org_id, org_name, 
+    supplier_code, supplier_name, supplier_contact_person, supplier_contact_phone, bid_state, 
+    status_step, status_comment, state, mode, source, trait, biz_type, biz_type_name, 
+    apply_date, impl_start_date, impl_end_date, discount_rate, entrust_org_ids, remark, 
+    is_deleted, creator, modifier, gmt_created, gmt_modified, is_contain_goods, contact_person, 
+    contact_phone, district_id, district_name, suspend_start_date, suspend_end_date, 
+    deposit_amount, protocol_type, net_id, instance_code, supplier_tag
+  </sql>
+  <sql id="Blob_Column_List">
+    sale_deliver_ids, sale_deliver_names, service_deliver_ids, service_deliver_names, 
+    extended_json, deliver_ids, deliver_names, effective_deliver_ids
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ag_protocol
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ag_protocol
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.AgProtocolWithBLOBs">
+    insert into ag_protocol (id, protocol_no, protocol_name, 
+      project_id, project_no, project_name, 
+      org_id, org_name, supplier_code, 
+      supplier_name, supplier_contact_person, supplier_contact_phone, 
+      bid_state, status_step, status_comment, 
+      state, mode, source, trait, 
+      biz_type, biz_type_name, apply_date, 
+      impl_start_date, impl_end_date, discount_rate, 
+      entrust_org_ids, remark, is_deleted, 
+      creator, modifier, gmt_created, 
+      gmt_modified, is_contain_goods, contact_person, 
+      contact_phone, district_id, district_name, 
+      suspend_start_date, suspend_end_date, deposit_amount, 
+      protocol_type, net_id, instance_code, 
+      supplier_tag, sale_deliver_ids, sale_deliver_names, 
+      service_deliver_ids, service_deliver_names, 
+      extended_json, deliver_ids, deliver_names, 
+      effective_deliver_ids)
+    values (#{id,jdbcType=BIGINT}, #{protocolNo,jdbcType=VARCHAR}, #{protocolName,jdbcType=VARCHAR}, 
+      #{projectId,jdbcType=BIGINT}, #{projectNo,jdbcType=VARCHAR}, #{projectName,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=BIGINT}, #{orgName,jdbcType=VARCHAR}, #{supplierCode,jdbcType=BIGINT}, 
+      #{supplierName,jdbcType=VARCHAR}, #{supplierContactPerson,jdbcType=VARCHAR}, #{supplierContactPhone,jdbcType=VARCHAR}, 
+      #{bidState,jdbcType=BIT}, #{statusStep,jdbcType=BIGINT}, #{statusComment,jdbcType=VARCHAR}, 
+      #{state,jdbcType=BIT}, #{mode,jdbcType=BIT}, #{source,jdbcType=BIT}, #{trait,jdbcType=INTEGER}, 
+      #{bizType,jdbcType=BIT}, #{bizTypeName,jdbcType=VARCHAR}, #{applyDate,jdbcType=TIMESTAMP}, 
+      #{implStartDate,jdbcType=TIMESTAMP}, #{implEndDate,jdbcType=TIMESTAMP}, #{discountRate,jdbcType=DECIMAL}, 
+      #{entrustOrgIds,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, 
+      #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, #{gmtCreated,jdbcType=TIMESTAMP}, 
+      #{gmtModified,jdbcType=TIMESTAMP}, #{isContainGoods,jdbcType=BIT}, #{contactPerson,jdbcType=VARCHAR}, 
+      #{contactPhone,jdbcType=VARCHAR}, #{districtId,jdbcType=VARCHAR}, #{districtName,jdbcType=VARCHAR}, 
+      #{suspendStartDate,jdbcType=TIMESTAMP}, #{suspendEndDate,jdbcType=TIMESTAMP}, #{depositAmount,jdbcType=BIGINT}, 
+      #{protocolType,jdbcType=BIT}, #{netId,jdbcType=BIGINT}, #{instanceCode,jdbcType=VARCHAR}, 
+      #{supplierTag,jdbcType=VARCHAR}, #{saleDeliverIds,jdbcType=LONGVARCHAR}, #{saleDeliverNames,jdbcType=LONGVARCHAR}, 
+      #{serviceDeliverIds,jdbcType=LONGVARCHAR}, #{serviceDeliverNames,jdbcType=LONGVARCHAR}, 
+      #{extendedJson,jdbcType=LONGVARCHAR}, #{deliverIds,jdbcType=LONGVARCHAR}, #{deliverNames,jdbcType=LONGVARCHAR}, 
+      #{effectiveDeliverIds,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.AgProtocolWithBLOBs">
+    insert into ag_protocol
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="protocolNo != null">
+        protocol_no,
+      </if>
+      <if test="protocolName != null">
+        protocol_name,
+      </if>
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="projectNo != null">
+        project_no,
+      </if>
+      <if test="projectName != null">
+        project_name,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="supplierCode != null">
+        supplier_code,
+      </if>
+      <if test="supplierName != null">
+        supplier_name,
+      </if>
+      <if test="supplierContactPerson != null">
+        supplier_contact_person,
+      </if>
+      <if test="supplierContactPhone != null">
+        supplier_contact_phone,
+      </if>
+      <if test="bidState != null">
+        bid_state,
+      </if>
+      <if test="statusStep != null">
+        status_step,
+      </if>
+      <if test="statusComment != null">
+        status_comment,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="mode != null">
+        mode,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="trait != null">
+        trait,
+      </if>
+      <if test="bizType != null">
+        biz_type,
+      </if>
+      <if test="bizTypeName != null">
+        biz_type_name,
+      </if>
+      <if test="applyDate != null">
+        apply_date,
+      </if>
+      <if test="implStartDate != null">
+        impl_start_date,
+      </if>
+      <if test="implEndDate != null">
+        impl_end_date,
+      </if>
+      <if test="discountRate != null">
+        discount_rate,
+      </if>
+      <if test="entrustOrgIds != null">
+        entrust_org_ids,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="isContainGoods != null">
+        is_contain_goods,
+      </if>
+      <if test="contactPerson != null">
+        contact_person,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="districtId != null">
+        district_id,
+      </if>
+      <if test="districtName != null">
+        district_name,
+      </if>
+      <if test="suspendStartDate != null">
+        suspend_start_date,
+      </if>
+      <if test="suspendEndDate != null">
+        suspend_end_date,
+      </if>
+      <if test="depositAmount != null">
+        deposit_amount,
+      </if>
+      <if test="protocolType != null">
+        protocol_type,
+      </if>
+      <if test="netId != null">
+        net_id,
+      </if>
+      <if test="instanceCode != null">
+        instance_code,
+      </if>
+      <if test="supplierTag != null">
+        supplier_tag,
+      </if>
+      <if test="saleDeliverIds != null">
+        sale_deliver_ids,
+      </if>
+      <if test="saleDeliverNames != null">
+        sale_deliver_names,
+      </if>
+      <if test="serviceDeliverIds != null">
+        service_deliver_ids,
+      </if>
+      <if test="serviceDeliverNames != null">
+        service_deliver_names,
+      </if>
+      <if test="extendedJson != null">
+        extended_json,
+      </if>
+      <if test="deliverIds != null">
+        deliver_ids,
+      </if>
+      <if test="deliverNames != null">
+        deliver_names,
+      </if>
+      <if test="effectiveDeliverIds != null">
+        effective_deliver_ids,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="protocolNo != null">
+        #{protocolNo,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolName != null">
+        #{protocolName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="projectNo != null">
+        #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierCode != null">
+        #{supplierCode,jdbcType=BIGINT},
+      </if>
+      <if test="supplierName != null">
+        #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContactPerson != null">
+        #{supplierContactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContactPhone != null">
+        #{supplierContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bidState != null">
+        #{bidState,jdbcType=BIT},
+      </if>
+      <if test="statusStep != null">
+        #{statusStep,jdbcType=BIGINT},
+      </if>
+      <if test="statusComment != null">
+        #{statusComment,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=BIT},
+      </if>
+      <if test="mode != null">
+        #{mode,jdbcType=BIT},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=BIT},
+      </if>
+      <if test="trait != null">
+        #{trait,jdbcType=INTEGER},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=BIT},
+      </if>
+      <if test="bizTypeName != null">
+        #{bizTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null">
+        #{applyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="implStartDate != null">
+        #{implStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="implEndDate != null">
+        #{implEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discountRate != null">
+        #{discountRate,jdbcType=DECIMAL},
+      </if>
+      <if test="entrustOrgIds != null">
+        #{entrustOrgIds,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isContainGoods != null">
+        #{isContainGoods,jdbcType=BIT},
+      </if>
+      <if test="contactPerson != null">
+        #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="districtId != null">
+        #{districtId,jdbcType=VARCHAR},
+      </if>
+      <if test="districtName != null">
+        #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="suspendStartDate != null">
+        #{suspendStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suspendEndDate != null">
+        #{suspendEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="depositAmount != null">
+        #{depositAmount,jdbcType=BIGINT},
+      </if>
+      <if test="protocolType != null">
+        #{protocolType,jdbcType=BIT},
+      </if>
+      <if test="netId != null">
+        #{netId,jdbcType=BIGINT},
+      </if>
+      <if test="instanceCode != null">
+        #{instanceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierTag != null">
+        #{supplierTag,jdbcType=VARCHAR},
+      </if>
+      <if test="saleDeliverIds != null">
+        #{saleDeliverIds,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="saleDeliverNames != null">
+        #{saleDeliverNames,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="serviceDeliverIds != null">
+        #{serviceDeliverIds,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="serviceDeliverNames != null">
+        #{serviceDeliverNames,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extendedJson != null">
+        #{extendedJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deliverIds != null">
+        #{deliverIds,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deliverNames != null">
+        #{deliverNames,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="effectiveDeliverIds != null">
+        #{effectiveDeliverIds,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.AgProtocolWithBLOBs">
+    update ag_protocol
+    <set>
+      <if test="protocolNo != null">
+        protocol_no = #{protocolNo,jdbcType=VARCHAR},
+      </if>
+      <if test="protocolName != null">
+        protocol_name = #{protocolName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=BIGINT},
+      </if>
+      <if test="projectNo != null">
+        project_no = #{projectNo,jdbcType=VARCHAR},
+      </if>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=BIGINT},
+      </if>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierCode != null">
+        supplier_code = #{supplierCode,jdbcType=BIGINT},
+      </if>
+      <if test="supplierName != null">
+        supplier_name = #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContactPerson != null">
+        supplier_contact_person = #{supplierContactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierContactPhone != null">
+        supplier_contact_phone = #{supplierContactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="bidState != null">
+        bid_state = #{bidState,jdbcType=BIT},
+      </if>
+      <if test="statusStep != null">
+        status_step = #{statusStep,jdbcType=BIGINT},
+      </if>
+      <if test="statusComment != null">
+        status_comment = #{statusComment,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="mode != null">
+        mode = #{mode,jdbcType=BIT},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=BIT},
+      </if>
+      <if test="trait != null">
+        trait = #{trait,jdbcType=INTEGER},
+      </if>
+      <if test="bizType != null">
+        biz_type = #{bizType,jdbcType=BIT},
+      </if>
+      <if test="bizTypeName != null">
+        biz_type_name = #{bizTypeName,jdbcType=VARCHAR},
+      </if>
+      <if test="applyDate != null">
+        apply_date = #{applyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="implStartDate != null">
+        impl_start_date = #{implStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="implEndDate != null">
+        impl_end_date = #{implEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="discountRate != null">
+        discount_rate = #{discountRate,jdbcType=DECIMAL},
+      </if>
+      <if test="entrustOrgIds != null">
+        entrust_org_ids = #{entrustOrgIds,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isContainGoods != null">
+        is_contain_goods = #{isContainGoods,jdbcType=BIT},
+      </if>
+      <if test="contactPerson != null">
+        contact_person = #{contactPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="districtId != null">
+        district_id = #{districtId,jdbcType=VARCHAR},
+      </if>
+      <if test="districtName != null">
+        district_name = #{districtName,jdbcType=VARCHAR},
+      </if>
+      <if test="suspendStartDate != null">
+        suspend_start_date = #{suspendStartDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="suspendEndDate != null">
+        suspend_end_date = #{suspendEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="depositAmount != null">
+        deposit_amount = #{depositAmount,jdbcType=BIGINT},
+      </if>
+      <if test="protocolType != null">
+        protocol_type = #{protocolType,jdbcType=BIT},
+      </if>
+      <if test="netId != null">
+        net_id = #{netId,jdbcType=BIGINT},
+      </if>
+      <if test="instanceCode != null">
+        instance_code = #{instanceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierTag != null">
+        supplier_tag = #{supplierTag,jdbcType=VARCHAR},
+      </if>
+      <if test="saleDeliverIds != null">
+        sale_deliver_ids = #{saleDeliverIds,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="saleDeliverNames != null">
+        sale_deliver_names = #{saleDeliverNames,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="serviceDeliverIds != null">
+        service_deliver_ids = #{serviceDeliverIds,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="serviceDeliverNames != null">
+        service_deliver_names = #{serviceDeliverNames,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="extendedJson != null">
+        extended_json = #{extendedJson,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deliverIds != null">
+        deliver_ids = #{deliverIds,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="deliverNames != null">
+        deliver_names = #{deliverNames,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="effectiveDeliverIds != null">
+        effective_deliver_ids = #{effectiveDeliverIds,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.mybatis.generator.model.AgProtocolWithBLOBs">
+    update ag_protocol
+    set protocol_no = #{protocolNo,jdbcType=VARCHAR},
+      protocol_name = #{protocolName,jdbcType=VARCHAR},
+      project_id = #{projectId,jdbcType=BIGINT},
+      project_no = #{projectNo,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=BIGINT},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      supplier_code = #{supplierCode,jdbcType=BIGINT},
+      supplier_name = #{supplierName,jdbcType=VARCHAR},
+      supplier_contact_person = #{supplierContactPerson,jdbcType=VARCHAR},
+      supplier_contact_phone = #{supplierContactPhone,jdbcType=VARCHAR},
+      bid_state = #{bidState,jdbcType=BIT},
+      status_step = #{statusStep,jdbcType=BIGINT},
+      status_comment = #{statusComment,jdbcType=VARCHAR},
+      state = #{state,jdbcType=BIT},
+      mode = #{mode,jdbcType=BIT},
+      source = #{source,jdbcType=BIT},
+      trait = #{trait,jdbcType=INTEGER},
+      biz_type = #{bizType,jdbcType=BIT},
+      biz_type_name = #{bizTypeName,jdbcType=VARCHAR},
+      apply_date = #{applyDate,jdbcType=TIMESTAMP},
+      impl_start_date = #{implStartDate,jdbcType=TIMESTAMP},
+      impl_end_date = #{implEndDate,jdbcType=TIMESTAMP},
+      discount_rate = #{discountRate,jdbcType=DECIMAL},
+      entrust_org_ids = #{entrustOrgIds,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      is_contain_goods = #{isContainGoods,jdbcType=BIT},
+      contact_person = #{contactPerson,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      district_id = #{districtId,jdbcType=VARCHAR},
+      district_name = #{districtName,jdbcType=VARCHAR},
+      suspend_start_date = #{suspendStartDate,jdbcType=TIMESTAMP},
+      suspend_end_date = #{suspendEndDate,jdbcType=TIMESTAMP},
+      deposit_amount = #{depositAmount,jdbcType=BIGINT},
+      protocol_type = #{protocolType,jdbcType=BIT},
+      net_id = #{netId,jdbcType=BIGINT},
+      instance_code = #{instanceCode,jdbcType=VARCHAR},
+      supplier_tag = #{supplierTag,jdbcType=VARCHAR},
+      sale_deliver_ids = #{saleDeliverIds,jdbcType=LONGVARCHAR},
+      sale_deliver_names = #{saleDeliverNames,jdbcType=LONGVARCHAR},
+      service_deliver_ids = #{serviceDeliverIds,jdbcType=LONGVARCHAR},
+      service_deliver_names = #{serviceDeliverNames,jdbcType=LONGVARCHAR},
+      extended_json = #{extendedJson,jdbcType=LONGVARCHAR},
+      deliver_ids = #{deliverIds,jdbcType=LONGVARCHAR},
+      deliver_names = #{deliverNames,jdbcType=LONGVARCHAR},
+      effective_deliver_ids = #{effectiveDeliverIds,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.AgProtocol">
+    update ag_protocol
+    set protocol_no = #{protocolNo,jdbcType=VARCHAR},
+      protocol_name = #{protocolName,jdbcType=VARCHAR},
+      project_id = #{projectId,jdbcType=BIGINT},
+      project_no = #{projectNo,jdbcType=VARCHAR},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=BIGINT},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      supplier_code = #{supplierCode,jdbcType=BIGINT},
+      supplier_name = #{supplierName,jdbcType=VARCHAR},
+      supplier_contact_person = #{supplierContactPerson,jdbcType=VARCHAR},
+      supplier_contact_phone = #{supplierContactPhone,jdbcType=VARCHAR},
+      bid_state = #{bidState,jdbcType=BIT},
+      status_step = #{statusStep,jdbcType=BIGINT},
+      status_comment = #{statusComment,jdbcType=VARCHAR},
+      state = #{state,jdbcType=BIT},
+      mode = #{mode,jdbcType=BIT},
+      source = #{source,jdbcType=BIT},
+      trait = #{trait,jdbcType=INTEGER},
+      biz_type = #{bizType,jdbcType=BIT},
+      biz_type_name = #{bizTypeName,jdbcType=VARCHAR},
+      apply_date = #{applyDate,jdbcType=TIMESTAMP},
+      impl_start_date = #{implStartDate,jdbcType=TIMESTAMP},
+      impl_end_date = #{implEndDate,jdbcType=TIMESTAMP},
+      discount_rate = #{discountRate,jdbcType=DECIMAL},
+      entrust_org_ids = #{entrustOrgIds,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      is_contain_goods = #{isContainGoods,jdbcType=BIT},
+      contact_person = #{contactPerson,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      district_id = #{districtId,jdbcType=VARCHAR},
+      district_name = #{districtName,jdbcType=VARCHAR},
+      suspend_start_date = #{suspendStartDate,jdbcType=TIMESTAMP},
+      suspend_end_date = #{suspendEndDate,jdbcType=TIMESTAMP},
+      deposit_amount = #{depositAmount,jdbcType=BIGINT},
+      protocol_type = #{protocolType,jdbcType=BIT},
+      net_id = #{netId,jdbcType=BIGINT},
+      instance_code = #{instanceCode,jdbcType=VARCHAR},
+      supplier_tag = #{supplierTag,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

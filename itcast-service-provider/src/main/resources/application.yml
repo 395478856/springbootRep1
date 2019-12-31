@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: service-provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///test?serverTimezone=UTC&characterEncoding=utf-8
+    username: root
+    password: root
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+mybatis:
+  type-aliases-package: cn.itcast.service.provider.pojo
+  configuration:
+    map-underscore-to-camel-case: true

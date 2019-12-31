@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mybatis.generator.mapper.CodesetMappingCategoryMapper">
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    <id column="codeset_mapping_category_id" jdbcType="BIGINT" property="codesetMappingCategoryId" />
+    <result column="codeset_mapping_id" jdbcType="INTEGER" property="codesetMappingId" />
+    <result column="relation_id" jdbcType="BIGINT" property="relationId" />
+    <result column="cz_codeset_item_id" jdbcType="BIGINT" property="czCodesetItemId" />
+    <result column="category_code" jdbcType="VARCHAR" property="categoryCode" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+    <result column="time_released" jdbcType="TIMESTAMP" property="timeReleased" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    codeset_mapping_category_id, codeset_mapping_id, relation_id, cz_codeset_item_id, 
+    category_code, category_name, time_released, year
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from codeset_mapping_category
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from codeset_mapping_category
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    insert into codeset_mapping_category (codeset_mapping_category_id, codeset_mapping_id, 
+      relation_id, cz_codeset_item_id, category_code, 
+      category_name, time_released, year, 
+      description)
+    values (#{codesetMappingCategoryId,jdbcType=BIGINT}, #{codesetMappingId,jdbcType=INTEGER}, 
+      #{relationId,jdbcType=BIGINT}, #{czCodesetItemId,jdbcType=BIGINT}, #{categoryCode,jdbcType=VARCHAR}, 
+      #{categoryName,jdbcType=VARCHAR}, #{timeReleased,jdbcType=TIMESTAMP}, #{year,jdbcType=INTEGER}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    insert into codeset_mapping_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codesetMappingCategoryId != null">
+        codeset_mapping_category_id,
+      </if>
+      <if test="codesetMappingId != null">
+        codeset_mapping_id,
+      </if>
+      <if test="relationId != null">
+        relation_id,
+      </if>
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id,
+      </if>
+      <if test="categoryCode != null">
+        category_code,
+      </if>
+      <if test="categoryName != null">
+        category_name,
+      </if>
+      <if test="timeReleased != null">
+        time_released,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codesetMappingCategoryId != null">
+        #{codesetMappingCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="codesetMappingId != null">
+        #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="relationId != null">
+        #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodesetItemId != null">
+        #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryCode != null">
+        #{categoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="timeReleased != null">
+        #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    update codeset_mapping_category
+    <set>
+      <if test="codesetMappingId != null">
+        codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="relationId != null">
+        relation_id = #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryCode != null">
+        category_code = #{categoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="timeReleased != null">
+        time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    update codeset_mapping_category
+    set codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      relation_id = #{relationId,jdbcType=BIGINT},
+      cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      category_code = #{categoryCode,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      year = #{year,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    update codeset_mapping_category
+    set codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      relation_id = #{relationId,jdbcType=BIGINT},
+      cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      category_code = #{categoryCode,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      year = #{year,jdbcType=INTEGER}
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    <id column="codeset_mapping_category_id" jdbcType="BIGINT" property="codesetMappingCategoryId" />
+    <result column="codeset_mapping_id" jdbcType="INTEGER" property="codesetMappingId" />
+    <result column="relation_id" jdbcType="BIGINT" property="relationId" />
+    <result column="cz_codeset_item_id" jdbcType="BIGINT" property="czCodesetItemId" />
+    <result column="category_code" jdbcType="VARCHAR" property="categoryCode" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+    <result column="time_released" jdbcType="TIMESTAMP" property="timeReleased" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    codeset_mapping_category_id, codeset_mapping_id, relation_id, cz_codeset_item_id, 
+    category_code, category_name, time_released, year
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from codeset_mapping_category
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from codeset_mapping_category
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    insert into codeset_mapping_category (codeset_mapping_category_id, codeset_mapping_id, 
+      relation_id, cz_codeset_item_id, category_code, 
+      category_name, time_released, year, 
+      description)
+    values (#{codesetMappingCategoryId,jdbcType=BIGINT}, #{codesetMappingId,jdbcType=INTEGER}, 
+      #{relationId,jdbcType=BIGINT}, #{czCodesetItemId,jdbcType=BIGINT}, #{categoryCode,jdbcType=VARCHAR}, 
+      #{categoryName,jdbcType=VARCHAR}, #{timeReleased,jdbcType=TIMESTAMP}, #{year,jdbcType=INTEGER}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    insert into codeset_mapping_category
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="codesetMappingCategoryId != null">
+        codeset_mapping_category_id,
+      </if>
+      <if test="codesetMappingId != null">
+        codeset_mapping_id,
+      </if>
+      <if test="relationId != null">
+        relation_id,
+      </if>
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id,
+      </if>
+      <if test="categoryCode != null">
+        category_code,
+      </if>
+      <if test="categoryName != null">
+        category_name,
+      </if>
+      <if test="timeReleased != null">
+        time_released,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="codesetMappingCategoryId != null">
+        #{codesetMappingCategoryId,jdbcType=BIGINT},
+      </if>
+      <if test="codesetMappingId != null">
+        #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="relationId != null">
+        #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodesetItemId != null">
+        #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryCode != null">
+        #{categoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null">
+        #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="timeReleased != null">
+        #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    update codeset_mapping_category
+    <set>
+      <if test="codesetMappingId != null">
+        codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      </if>
+      <if test="relationId != null">
+        relation_id = #{relationId,jdbcType=BIGINT},
+      </if>
+      <if test="czCodesetItemId != null">
+        cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="categoryCode != null">
+        category_code = #{categoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="timeReleased != null">
+        time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    update codeset_mapping_category
+    set codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      relation_id = #{relationId,jdbcType=BIGINT},
+      cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      category_code = #{categoryCode,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      year = #{year,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CodesetMappingCategory">
+    update codeset_mapping_category
+    set codeset_mapping_id = #{codesetMappingId,jdbcType=INTEGER},
+      relation_id = #{relationId,jdbcType=BIGINT},
+      cz_codeset_item_id = #{czCodesetItemId,jdbcType=BIGINT},
+      category_code = #{categoryCode,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      year = #{year,jdbcType=INTEGER}
+    where codeset_mapping_category_id = #{codesetMappingCategoryId,jdbcType=BIGINT}
+  </update>
+</mapper>

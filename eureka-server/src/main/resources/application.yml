@@ -1,0 +1,20 @@
+server:
+  port: 10086
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5  # 设置心跳的时间间隔（默认是30秒）
+    lease-expiration-duration-in-seconds: 20 # 如果现在超过了20秒的间隔（默认是90秒）则服务无效了
+  client:
+    service-url:
+     defaultZone: http://localhost:10086/eureka
+    fetch-registry: false                           #是否将自己注册到Eureka Server 默认为true
+    register-with-eureka: true                     #是否从Eureka Server查询注册信息
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    eviction-interval-timer-in-ms: 1000 #设置清理的间隔时间，而后这个时间使用的是毫秒单位（默认是60秒）
+    enable-self-preservation: false #关闭自我保护机制
+#    wait-time-in-ms-when-sync-empty: 1 #设置eureka server同步失败的等待时间，默认5分钟，在这期间它不向客户端提供服务注册信息
+#    eureka.server.number-of-replication-retries: 5 #设置eureka server同步失败的重试次数，默认为5次

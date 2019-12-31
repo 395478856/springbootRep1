@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.mybatis.generator.mapper.ProcesslistMapper" >
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.Processlist" >
+    <result column="ID" property="id" jdbcType="BIGINT" />
+    <result column="USER" property="user" jdbcType="VARCHAR" />
+    <result column="HOST" property="host" jdbcType="VARCHAR" />
+    <result column="DB" property="db" jdbcType="VARCHAR" />
+    <result column="COMMAND" property="command" jdbcType="VARCHAR" />
+    <result column="TIME" property="time" jdbcType="INTEGER" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="cn.itcast.mybatis.generator.model.Processlist" extends="BaseResultMap" >
+    <result column="INFO" property="info" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Blob_Column_List" >
+    INFO
+  </sql>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.Processlist" >
+    insert into PROCESSLIST (ID, USER, HOST, 
+      DB, COMMAND, TIME, 
+      STATE, INFO)
+    values (#{id,jdbcType=BIGINT}, #{user,jdbcType=VARCHAR}, #{host,jdbcType=VARCHAR}, 
+      #{db,jdbcType=VARCHAR}, #{command,jdbcType=VARCHAR}, #{time,jdbcType=INTEGER}, 
+      #{state,jdbcType=VARCHAR}, #{info,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.Processlist" >
+    insert into PROCESSLIST
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="user != null" >
+        USER,
+      </if>
+      <if test="host != null" >
+        HOST,
+      </if>
+      <if test="db != null" >
+        DB,
+      </if>
+      <if test="command != null" >
+        COMMAND,
+      </if>
+      <if test="time != null" >
+        TIME,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="info != null" >
+        INFO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="user != null" >
+        #{user,jdbcType=VARCHAR},
+      </if>
+      <if test="host != null" >
+        #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="db != null" >
+        #{db,jdbcType=VARCHAR},
+      </if>
+      <if test="command != null" >
+        #{command,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

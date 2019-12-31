@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mybatis.generator.mapper.CzCodesetMapper">
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CzCodeset">
+    <id column="cz_codeset_id" jdbcType="BIGINT" property="czCodesetId" />
+    <result column="codeset" jdbcType="VARCHAR" property="codeset" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="time_released" jdbcType="TIMESTAMP" property="timeReleased" />
+    <result column="by_annual" jdbcType="TINYINT" property="byAnnual" />
+    <result column="by_district" jdbcType="TINYINT" property="byDistrict" />
+    <result column="hierarchy" jdbcType="TINYINT" property="hierarchy" />
+    <result column="data_version" jdbcType="INTEGER" property="dataVersion" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cz_codeset_id, codeset, name, time_released, by_annual, by_district, hierarchy, data_version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cz_codeset
+    where cz_codeset_id = #{czCodesetId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cz_codeset
+    where cz_codeset_id = #{czCodesetId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CzCodeset">
+    insert into cz_codeset (cz_codeset_id, codeset, name, 
+      time_released, by_annual, by_district, 
+      hierarchy, data_version)
+    values (#{czCodesetId,jdbcType=BIGINT}, #{codeset,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{timeReleased,jdbcType=TIMESTAMP}, #{byAnnual,jdbcType=TINYINT}, #{byDistrict,jdbcType=TINYINT}, 
+      #{hierarchy,jdbcType=TINYINT}, #{dataVersion,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CzCodeset">
+    insert into cz_codeset
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="czCodesetId != null">
+        cz_codeset_id,
+      </if>
+      <if test="codeset != null">
+        codeset,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="timeReleased != null">
+        time_released,
+      </if>
+      <if test="byAnnual != null">
+        by_annual,
+      </if>
+      <if test="byDistrict != null">
+        by_district,
+      </if>
+      <if test="hierarchy != null">
+        hierarchy,
+      </if>
+      <if test="dataVersion != null">
+        data_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="czCodesetId != null">
+        #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="codeset != null">
+        #{codeset,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="timeReleased != null">
+        #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="byAnnual != null">
+        #{byAnnual,jdbcType=TINYINT},
+      </if>
+      <if test="byDistrict != null">
+        #{byDistrict,jdbcType=TINYINT},
+      </if>
+      <if test="hierarchy != null">
+        #{hierarchy,jdbcType=TINYINT},
+      </if>
+      <if test="dataVersion != null">
+        #{dataVersion,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CzCodeset">
+    update cz_codeset
+    <set>
+      <if test="codeset != null">
+        codeset = #{codeset,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="timeReleased != null">
+        time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="byAnnual != null">
+        by_annual = #{byAnnual,jdbcType=TINYINT},
+      </if>
+      <if test="byDistrict != null">
+        by_district = #{byDistrict,jdbcType=TINYINT},
+      </if>
+      <if test="hierarchy != null">
+        hierarchy = #{hierarchy,jdbcType=TINYINT},
+      </if>
+      <if test="dataVersion != null">
+        data_version = #{dataVersion,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cz_codeset_id = #{czCodesetId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CzCodeset">
+    update cz_codeset
+    set codeset = #{codeset,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      by_annual = #{byAnnual,jdbcType=TINYINT},
+      by_district = #{byDistrict,jdbcType=TINYINT},
+      hierarchy = #{hierarchy,jdbcType=TINYINT},
+      data_version = #{dataVersion,jdbcType=INTEGER}
+    where cz_codeset_id = #{czCodesetId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.CzCodeset">
+    <id column="cz_codeset_id" jdbcType="BIGINT" property="czCodesetId" />
+    <result column="codeset" jdbcType="VARCHAR" property="codeset" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="time_released" jdbcType="TIMESTAMP" property="timeReleased" />
+    <result column="by_annual" jdbcType="TINYINT" property="byAnnual" />
+    <result column="by_district" jdbcType="TINYINT" property="byDistrict" />
+    <result column="hierarchy" jdbcType="TINYINT" property="hierarchy" />
+    <result column="data_version" jdbcType="INTEGER" property="dataVersion" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cz_codeset_id, codeset, name, time_released, by_annual, by_district, hierarchy, data_version
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cz_codeset
+    where cz_codeset_id = #{czCodesetId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from cz_codeset
+    where cz_codeset_id = #{czCodesetId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.CzCodeset">
+    insert into cz_codeset (cz_codeset_id, codeset, name, 
+      time_released, by_annual, by_district, 
+      hierarchy, data_version)
+    values (#{czCodesetId,jdbcType=BIGINT}, #{codeset,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{timeReleased,jdbcType=TIMESTAMP}, #{byAnnual,jdbcType=TINYINT}, #{byDistrict,jdbcType=TINYINT}, 
+      #{hierarchy,jdbcType=TINYINT}, #{dataVersion,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.CzCodeset">
+    insert into cz_codeset
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="czCodesetId != null">
+        cz_codeset_id,
+      </if>
+      <if test="codeset != null">
+        codeset,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="timeReleased != null">
+        time_released,
+      </if>
+      <if test="byAnnual != null">
+        by_annual,
+      </if>
+      <if test="byDistrict != null">
+        by_district,
+      </if>
+      <if test="hierarchy != null">
+        hierarchy,
+      </if>
+      <if test="dataVersion != null">
+        data_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="czCodesetId != null">
+        #{czCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="codeset != null">
+        #{codeset,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="timeReleased != null">
+        #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="byAnnual != null">
+        #{byAnnual,jdbcType=TINYINT},
+      </if>
+      <if test="byDistrict != null">
+        #{byDistrict,jdbcType=TINYINT},
+      </if>
+      <if test="hierarchy != null">
+        #{hierarchy,jdbcType=TINYINT},
+      </if>
+      <if test="dataVersion != null">
+        #{dataVersion,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.CzCodeset">
+    update cz_codeset
+    <set>
+      <if test="codeset != null">
+        codeset = #{codeset,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="timeReleased != null">
+        time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      </if>
+      <if test="byAnnual != null">
+        by_annual = #{byAnnual,jdbcType=TINYINT},
+      </if>
+      <if test="byDistrict != null">
+        by_district = #{byDistrict,jdbcType=TINYINT},
+      </if>
+      <if test="hierarchy != null">
+        hierarchy = #{hierarchy,jdbcType=TINYINT},
+      </if>
+      <if test="dataVersion != null">
+        data_version = #{dataVersion,jdbcType=INTEGER},
+      </if>
+    </set>
+    where cz_codeset_id = #{czCodesetId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.CzCodeset">
+    update cz_codeset
+    set codeset = #{codeset,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      time_released = #{timeReleased,jdbcType=TIMESTAMP},
+      by_annual = #{byAnnual,jdbcType=TINYINT},
+      by_district = #{byDistrict,jdbcType=TINYINT},
+      hierarchy = #{hierarchy,jdbcType=TINYINT},
+      data_version = #{dataVersion,jdbcType=INTEGER}
+    where cz_codeset_id = #{czCodesetId,jdbcType=BIGINT}
+  </update>
+</mapper>

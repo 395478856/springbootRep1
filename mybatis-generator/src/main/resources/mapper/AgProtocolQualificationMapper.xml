@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mybatis.generator.mapper.AgProtocolQualificationMapper">
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.AgProtocolQualification">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="protocol_id" jdbcType="BIGINT" property="protocolId" />
+    <result column="protocol_name" jdbcType="VARCHAR" property="protocolName" />
+    <result column="supplier_code" jdbcType="BIGINT" property="supplierCode" />
+    <result column="supplier_name" jdbcType="VARCHAR" property="supplierName" />
+    <result column="deliver_id" jdbcType="VARCHAR" property="deliverId" />
+    <result column="deliver_type" jdbcType="BIT" property="deliverType" />
+    <result column="from_district_id" jdbcType="VARCHAR" property="fromDistrictId" />
+    <result column="from_district_name" jdbcType="VARCHAR" property="fromDistrictName" />
+    <result column="from_org_id" jdbcType="BIGINT" property="fromOrgId" />
+    <result column="from_org_name" jdbcType="VARCHAR" property="fromOrgName" />
+    <result column="approval_org_id" jdbcType="BIGINT" property="approvalOrgId" />
+    <result column="approval_org_name" jdbcType="VARCHAR" property="approvalOrgName" />
+    <result column="source" jdbcType="BIT" property="source" />
+    <result column="biz_type" jdbcType="BIT" property="bizType" />
+    <result column="trait" jdbcType="INTEGER" property="trait" />
+    <result column="state" jdbcType="BIT" property="state" />
+    <result column="approval_comment" jdbcType="VARCHAR" property="approvalComment" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="modifier" jdbcType="VARCHAR" property="modifier" />
+    <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="protocol_type" jdbcType="VARCHAR" property="protocolType" />
+    <result column="net_id" jdbcType="BIGINT" property="netId" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="instance_code" jdbcType="VARCHAR" property="instanceCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, protocol_id, protocol_name, supplier_code, supplier_name, deliver_id, deliver_type, 
+    from_district_id, from_district_name, from_org_id, from_org_name, approval_org_id, 
+    approval_org_name, source, biz_type, trait, state, approval_comment, is_deleted, 
+    creator, modifier, gmt_created, gmt_modified, protocol_type, net_id, contact_name, 
+    contact_phone, instance_code
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ag_protocol_qualification
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from ag_protocol_qualification
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.AgProtocolQualification">
+    insert into ag_protocol_qualification (id, protocol_id, protocol_name, 
+      supplier_code, supplier_name, deliver_id, 
+      deliver_type, from_district_id, from_district_name, 
+      from_org_id, from_org_name, approval_org_id, 
+      approval_org_name, source, biz_type, 
+      trait, state, approval_comment, 
+      is_deleted, creator, modifier, 
+      gmt_created, gmt_modified, protocol_type, 
+      net_id, contact_name, contact_phone, 
+      instance_code)
+    values (#{id,jdbcType=BIGINT}, #{protocolId,jdbcType=BIGINT}, #{protocolName,jdbcType=VARCHAR}, 
+      #{supplierCode,jdbcType=BIGINT}, #{supplierName,jdbcType=VARCHAR}, #{deliverId,jdbcType=VARCHAR}, 
+      #{deliverType,jdbcType=BIT}, #{fromDistrictId,jdbcType=VARCHAR}, #{fromDistrictName,jdbcType=VARCHAR}, 
+      #{fromOrgId,jdbcType=BIGINT}, #{fromOrgName,jdbcType=VARCHAR}, #{approvalOrgId,jdbcType=BIGINT}, 
+      #{approvalOrgName,jdbcType=VARCHAR}, #{source,jdbcType=BIT}, #{bizType,jdbcType=BIT}, 
+      #{trait,jdbcType=INTEGER}, #{state,jdbcType=BIT}, #{approvalComment,jdbcType=VARCHAR}, 
+      #{isDeleted,jdbcType=BIT}, #{creator,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, 
+      #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, #{protocolType,jdbcType=VARCHAR}, 
+      #{netId,jdbcType=BIGINT}, #{contactName,jdbcType=VARCHAR}, #{contactPhone,jdbcType=VARCHAR}, 
+      #{instanceCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.AgProtocolQualification">
+    insert into ag_protocol_qualification
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="protocolId != null">
+        protocol_id,
+      </if>
+      <if test="protocolName != null">
+        protocol_name,
+      </if>
+      <if test="supplierCode != null">
+        supplier_code,
+      </if>
+      <if test="supplierName != null">
+        supplier_name,
+      </if>
+      <if test="deliverId != null">
+        deliver_id,
+      </if>
+      <if test="deliverType != null">
+        deliver_type,
+      </if>
+      <if test="fromDistrictId != null">
+        from_district_id,
+      </if>
+      <if test="fromDistrictName != null">
+        from_district_name,
+      </if>
+      <if test="fromOrgId != null">
+        from_org_id,
+      </if>
+      <if test="fromOrgName != null">
+        from_org_name,
+      </if>
+      <if test="approvalOrgId != null">
+        approval_org_id,
+      </if>
+      <if test="approvalOrgName != null">
+        approval_org_name,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="bizType != null">
+        biz_type,
+      </if>
+      <if test="trait != null">
+        trait,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="approvalComment != null">
+        approval_comment,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="protocolType != null">
+        protocol_type,
+      </if>
+      <if test="netId != null">
+        net_id,
+      </if>
+      <if test="contactName != null">
+        contact_name,
+      </if>
+      <if test="contactPhone != null">
+        contact_phone,
+      </if>
+      <if test="instanceCode != null">
+        instance_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="protocolId != null">
+        #{protocolId,jdbcType=BIGINT},
+      </if>
+      <if test="protocolName != null">
+        #{protocolName,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierCode != null">
+        #{supplierCode,jdbcType=BIGINT},
+      </if>
+      <if test="supplierName != null">
+        #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverId != null">
+        #{deliverId,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverType != null">
+        #{deliverType,jdbcType=BIT},
+      </if>
+      <if test="fromDistrictId != null">
+        #{fromDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="fromDistrictName != null">
+        #{fromDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="fromOrgId != null">
+        #{fromOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="fromOrgName != null">
+        #{fromOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalOrgId != null">
+        #{approvalOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="approvalOrgName != null">
+        #{approvalOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=BIT},
+      </if>
+      <if test="bizType != null">
+        #{bizType,jdbcType=BIT},
+      </if>
+      <if test="trait != null">
+        #{trait,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=BIT},
+      </if>
+      <if test="approvalComment != null">
+        #{approvalComment,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="protocolType != null">
+        #{protocolType,jdbcType=VARCHAR},
+      </if>
+      <if test="netId != null">
+        #{netId,jdbcType=BIGINT},
+      </if>
+      <if test="contactName != null">
+        #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="instanceCode != null">
+        #{instanceCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.AgProtocolQualification">
+    update ag_protocol_qualification
+    <set>
+      <if test="protocolId != null">
+        protocol_id = #{protocolId,jdbcType=BIGINT},
+      </if>
+      <if test="protocolName != null">
+        protocol_name = #{protocolName,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierCode != null">
+        supplier_code = #{supplierCode,jdbcType=BIGINT},
+      </if>
+      <if test="supplierName != null">
+        supplier_name = #{supplierName,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverId != null">
+        deliver_id = #{deliverId,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverType != null">
+        deliver_type = #{deliverType,jdbcType=BIT},
+      </if>
+      <if test="fromDistrictId != null">
+        from_district_id = #{fromDistrictId,jdbcType=VARCHAR},
+      </if>
+      <if test="fromDistrictName != null">
+        from_district_name = #{fromDistrictName,jdbcType=VARCHAR},
+      </if>
+      <if test="fromOrgId != null">
+        from_org_id = #{fromOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="fromOrgName != null">
+        from_org_name = #{fromOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalOrgId != null">
+        approval_org_id = #{approvalOrgId,jdbcType=BIGINT},
+      </if>
+      <if test="approvalOrgName != null">
+        approval_org_name = #{approvalOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=BIT},
+      </if>
+      <if test="bizType != null">
+        biz_type = #{bizType,jdbcType=BIT},
+      </if>
+      <if test="trait != null">
+        trait = #{trait,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=BIT},
+      </if>
+      <if test="approvalComment != null">
+        approval_comment = #{approvalComment,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="gmtCreated != null">
+        gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="protocolType != null">
+        protocol_type = #{protocolType,jdbcType=VARCHAR},
+      </if>
+      <if test="netId != null">
+        net_id = #{netId,jdbcType=BIGINT},
+      </if>
+      <if test="contactName != null">
+        contact_name = #{contactName,jdbcType=VARCHAR},
+      </if>
+      <if test="contactPhone != null">
+        contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="instanceCode != null">
+        instance_code = #{instanceCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.AgProtocolQualification">
+    update ag_protocol_qualification
+    set protocol_id = #{protocolId,jdbcType=BIGINT},
+      protocol_name = #{protocolName,jdbcType=VARCHAR},
+      supplier_code = #{supplierCode,jdbcType=BIGINT},
+      supplier_name = #{supplierName,jdbcType=VARCHAR},
+      deliver_id = #{deliverId,jdbcType=VARCHAR},
+      deliver_type = #{deliverType,jdbcType=BIT},
+      from_district_id = #{fromDistrictId,jdbcType=VARCHAR},
+      from_district_name = #{fromDistrictName,jdbcType=VARCHAR},
+      from_org_id = #{fromOrgId,jdbcType=BIGINT},
+      from_org_name = #{fromOrgName,jdbcType=VARCHAR},
+      approval_org_id = #{approvalOrgId,jdbcType=BIGINT},
+      approval_org_name = #{approvalOrgName,jdbcType=VARCHAR},
+      source = #{source,jdbcType=BIT},
+      biz_type = #{bizType,jdbcType=BIT},
+      trait = #{trait,jdbcType=INTEGER},
+      state = #{state,jdbcType=BIT},
+      approval_comment = #{approvalComment,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      protocol_type = #{protocolType,jdbcType=VARCHAR},
+      net_id = #{netId,jdbcType=BIGINT},
+      contact_name = #{contactName,jdbcType=VARCHAR},
+      contact_phone = #{contactPhone,jdbcType=VARCHAR},
+      instance_code = #{instanceCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+   <select id="selectByVo" parameterType="cn.itcast.mybatis.generator.vo.AgProtocolQualificationVo" resultType="cn.itcast.mybatis.generator.model.AgProtocolQualification">
+    select * from ag_protocol_qualification
+    where protocol_id = #{protocolId}
+    and  is_deleted = #{isDeleted}
+  </select>
+</mapper>

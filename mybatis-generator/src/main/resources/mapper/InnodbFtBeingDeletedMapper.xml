@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.mybatis.generator.mapper.InnodbFtBeingDeletedMapper" >
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.InnodbFtBeingDeleted" >
+    <result column="DOC_ID" property="docId" jdbcType="BIGINT" />
+  </resultMap>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.InnodbFtBeingDeleted" >
+    insert into INNODB_FT_BEING_DELETED (DOC_ID)
+    values (#{docId,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.InnodbFtBeingDeleted" >
+    insert into INNODB_FT_BEING_DELETED
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="docId != null" >
+        DOC_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="docId != null" >
+        #{docId,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+</mapper>

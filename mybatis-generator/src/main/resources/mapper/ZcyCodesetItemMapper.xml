@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mybatis.generator.mapper.ZcyCodesetItemMapper">
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    <id column="zcy_codeset_item_id" jdbcType="BIGINT" property="zcyCodesetItemId" />
+    <result column="zcy_codeset_id" jdbcType="BIGINT" property="zcyCodesetId" />
+    <result column="zcy_code" jdbcType="VARCHAR" property="zcyCode" />
+    <result column="zcy_codeset" jdbcType="VARCHAR" property="zcyCodeset" />
+    <result column="zcy_codeset_division_id" jdbcType="INTEGER" property="zcyCodesetDivisionId" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="data_version" jdbcType="TINYINT" property="dataVersion" />
+    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    zcy_codeset_item_id, zcy_codeset_id, zcy_code, zcy_codeset, zcy_codeset_division_id, 
+    year, code, name, data_version, del_flag, district
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from zcy_codeset_item
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from zcy_codeset_item
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    insert into zcy_codeset_item (zcy_codeset_item_id, zcy_codeset_id, zcy_code, 
+      zcy_codeset, zcy_codeset_division_id, year, 
+      code, name, data_version, 
+      del_flag, district, description
+      )
+    values (#{zcyCodesetItemId,jdbcType=BIGINT}, #{zcyCodesetId,jdbcType=BIGINT}, #{zcyCode,jdbcType=VARCHAR}, 
+      #{zcyCodeset,jdbcType=VARCHAR}, #{zcyCodesetDivisionId,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{dataVersion,jdbcType=TINYINT}, 
+      #{delFlag,jdbcType=TINYINT}, #{district,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    insert into zcy_codeset_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zcyCodesetItemId != null">
+        zcy_codeset_item_id,
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id,
+      </if>
+      <if test="zcyCode != null">
+        zcy_code,
+      </if>
+      <if test="zcyCodeset != null">
+        zcy_codeset,
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        zcy_codeset_division_id,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="dataVersion != null">
+        data_version,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zcyCodesetItemId != null">
+        #{zcyCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetId != null">
+        #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCode != null">
+        #{zcyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodeset != null">
+        #{zcyCodeset,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        #{zcyCodesetDivisionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null">
+        #{dataVersion,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    update zcy_codeset_item
+    <set>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCode != null">
+        zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodeset != null">
+        zcy_codeset = #{zcyCodeset,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null">
+        data_version = #{dataVersion,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    update zcy_codeset_item
+    set zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      zcy_codeset = #{zcyCodeset,jdbcType=VARCHAR},
+      zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      data_version = #{dataVersion,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      district = #{district,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    update zcy_codeset_item
+    set zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      zcy_codeset = #{zcyCodeset,jdbcType=VARCHAR},
+      zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      data_version = #{dataVersion,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      district = #{district,jdbcType=VARCHAR}
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    <id column="zcy_codeset_item_id" jdbcType="BIGINT" property="zcyCodesetItemId" />
+    <result column="zcy_codeset_id" jdbcType="BIGINT" property="zcyCodesetId" />
+    <result column="zcy_code" jdbcType="VARCHAR" property="zcyCode" />
+    <result column="zcy_codeset" jdbcType="VARCHAR" property="zcyCodeset" />
+    <result column="zcy_codeset_division_id" jdbcType="INTEGER" property="zcyCodesetDivisionId" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="data_version" jdbcType="TINYINT" property="dataVersion" />
+    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    zcy_codeset_item_id, zcy_codeset_id, zcy_code, zcy_codeset, zcy_codeset_division_id, 
+    year, code, name, data_version, del_flag, district
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from zcy_codeset_item
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from zcy_codeset_item
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    insert into zcy_codeset_item (zcy_codeset_item_id, zcy_codeset_id, zcy_code, 
+      zcy_codeset, zcy_codeset_division_id, year, 
+      code, name, data_version, 
+      del_flag, district, description
+      )
+    values (#{zcyCodesetItemId,jdbcType=BIGINT}, #{zcyCodesetId,jdbcType=BIGINT}, #{zcyCode,jdbcType=VARCHAR}, 
+      #{zcyCodeset,jdbcType=VARCHAR}, #{zcyCodesetDivisionId,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}, 
+      #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{dataVersion,jdbcType=TINYINT}, 
+      #{delFlag,jdbcType=TINYINT}, #{district,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    insert into zcy_codeset_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="zcyCodesetItemId != null">
+        zcy_codeset_item_id,
+      </if>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id,
+      </if>
+      <if test="zcyCode != null">
+        zcy_code,
+      </if>
+      <if test="zcyCodeset != null">
+        zcy_codeset,
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        zcy_codeset_division_id,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="dataVersion != null">
+        data_version,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="zcyCodesetItemId != null">
+        #{zcyCodesetItemId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCodesetId != null">
+        #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCode != null">
+        #{zcyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodeset != null">
+        #{zcyCodeset,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        #{zcyCodesetDivisionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null">
+        #{dataVersion,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    update zcy_codeset_item
+    <set>
+      <if test="zcyCodesetId != null">
+        zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      </if>
+      <if test="zcyCode != null">
+        zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodeset != null">
+        zcy_codeset = #{zcyCodeset,jdbcType=VARCHAR},
+      </if>
+      <if test="zcyCodesetDivisionId != null">
+        zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="dataVersion != null">
+        data_version = #{dataVersion,jdbcType=TINYINT},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    update zcy_codeset_item
+    set zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      zcy_codeset = #{zcyCodeset,jdbcType=VARCHAR},
+      zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      data_version = #{dataVersion,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      district = #{district,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.itcast.mybatis.generator.model.ZcyCodesetItem">
+    update zcy_codeset_item
+    set zcy_codeset_id = #{zcyCodesetId,jdbcType=BIGINT},
+      zcy_code = #{zcyCode,jdbcType=VARCHAR},
+      zcy_codeset = #{zcyCodeset,jdbcType=VARCHAR},
+      zcy_codeset_division_id = #{zcyCodesetDivisionId,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      data_version = #{dataVersion,jdbcType=TINYINT},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      district = #{district,jdbcType=VARCHAR}
+    where zcy_codeset_item_id = #{zcyCodesetItemId,jdbcType=BIGINT}
+  </update>
+</mapper>
